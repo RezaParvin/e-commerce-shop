@@ -1,0 +1,16 @@
+.sign-in {
+  margin-top: 50px;
+  width: 30vw;
+
+  & h3 {
+    font-size: 17px;
+  }
+  & p {
+    font-size: 13px;
+  }
+}
+.form {
+  margin-top: 50px;
+  display: block;
+  box-sizing: border-box;
+}
