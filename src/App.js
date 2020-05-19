@@ -7,7 +7,7 @@ function App() {
   return (
     <div>
       <Route exact path="/" component={HomePage} />
-      <Route path="/hats" render={() => <h2>Hats Page Hello</h2>} />
+      <Route path="/hats" render={() => <h2>Hats Page</h2>} />
     </div>
   );
 }
