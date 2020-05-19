@@ -117,7 +117,7 @@ export const SHOP_DATA = [
     },
     {
       id: 3,
-      title: 'کت',
+      title: 'کت و ژاکت',
       routeName: 'jackets',
       items: [
         {
