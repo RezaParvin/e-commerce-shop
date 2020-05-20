@@ -1,6 +1,6 @@
 .btn-custom {
   display: inline-block;
-  border: 1px solid white;
+  border: 1px solid rgb(0, 0, 0);
   outline: none;
   background-color: rgb(37, 37, 37);
   height: 45px;
@@ -16,5 +16,14 @@
     background-color: white;
     border-color: black;
     color: black;
+  }
+  &.btn-google {
+    background-color: #4285f4;
+    border-color: white;
+    &:hover {
+      color: #357ae8;
+      background-color: white;
+      border-color: #357ae8;
+    }
   }
 }
