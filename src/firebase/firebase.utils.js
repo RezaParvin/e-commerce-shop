@@ -22,6 +22,33 @@ firebase.initializeApp(config);
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
+//if user is Auth , send to database
+export const createUserProfileDocument = async (userAuth, additionalData) => {
+  if (!userAuth) return;
+  
+  const userRef = firestore.doc(`/users/${userAuth.uid}`);
+  const snapShot = await userRef.get();
+
+  if (!snapShot.exists) {
+    const createAt = new Date();
+    const displayName = userAuth.displayName;
+    const email = userAuth.email;
+
+    try {
+      await userRef.set({
+        displayName,
+        email,
+        createAt,
+        ...additionalData,
+      });
+    } catch (error) {
+      console.log("Error in Create User Profile", error);
+    }
+  }
+
+  return userRef;
+};
+
 //use googleAuth in App
 
 //1-use object auth in overall app
