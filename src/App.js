@@ -9,6 +9,7 @@ import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { connect } from "react-redux";
 import * as actions from "./redux/actions/index";
 
+
 class App extends Component {
   componentDidMount() {
     this.unOnAuthStateChange = auth.onAuthStateChanged(async (userAuth) => {
