@@ -1,7 +1,12 @@
 import React from "react";
 import "./CollectionPreviewItem.scss";
+import CustomButton from "../../Custom-Button/Custom-Button";
+import { connect } from "react-redux";
+import * as actions from "../../../redux/actions/index";
 
-const CollectionPreviewItem = ({ id, name, imageUrl, price }) => {
+const CollectionPreviewItem = ({ item, onAddItemToCart }) => {
+  const {name, imageUrl, price } = item;
+
   const style = {
     backgroundImage: `url('${imageUrl}')`,
   };
@@ -9,6 +14,17 @@ const CollectionPreviewItem = ({ id, name, imageUrl, price }) => {
   return (
     <div className="collection-item">
       <div className="collection-image" style={style}></div>
+      <div className="collection-cutsom-button">
+        <CustomButton
+          inCollection
+          width="80%"
+          onClick={() => {
+            onAddItemToCart(item);
+          }}
+        >
+          اضافه به سبد
+        </CustomButton>
+      </div>
       <footer className="collection-footer">
         <p>{name}</p>
         <span>{price}</span>
@@ -17,4 +33,12 @@ const CollectionPreviewItem = ({ id, name, imageUrl, price }) => {
   );
 };
 
-export default CollectionPreviewItem;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAddItemToCart: (item) => {
+      dispatch(actions.addItemToCart(item));
+    },
+  };
+};
+
+export default connect(null, mapDispatchToProps)(CollectionPreviewItem);

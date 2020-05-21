@@ -6,11 +6,11 @@ const CollectionPreview = ({ title, items, routeName }) => {
   return (
     <div className="collection-preview">
       <h2>{title}</h2>
-      <section className='collection-items'>
+      <section className="collection-items">
         {items
           .filter((item, idx) => idx < 4)
-          .map(({ id, ...other }) => (
-            <CollectionPreviewItem key={id} id={id} {...other} />
+          .map((item) => (
+            <CollectionPreviewItem key={item.id} item={item} />
           ))}
       </section>
     </div>

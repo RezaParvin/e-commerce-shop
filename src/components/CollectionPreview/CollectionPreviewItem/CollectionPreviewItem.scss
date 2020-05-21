@@ -1,12 +1,15 @@
 .collection-item {
   width: 22%;
   height: 350px;
+  position: relative;
+  cursor: pointer;
 
   & .collection-image {
     width: 100%;
     height: 90%;
     background-size: cover;
     background-position: center;
+    transition: all 0.3s ease-out;
   }
 
   & .collection-footer {
@@ -15,13 +18,31 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    & p{
-        font-size: 15px;
+    & p {
+      font-size: 15px;
     }
-    & span{
-        display: inline-block;
-        font-size: 15px;
-        font-weight: bold;
+    & span {
+      display: inline-block;
+      font-size: 15px;
+      font-weight: bold;
+    }
+  }
+  .collection-cutsom-button {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 60px;
+    display: none;
+  }
+
+  &:hover {
+    & .collection-image {
+      opacity: 0.7;
+    }
+    .collection-cutsom-button{
+      display: flex;
     }
   }
 }

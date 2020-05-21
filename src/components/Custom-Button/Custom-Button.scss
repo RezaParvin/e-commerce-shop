@@ -23,7 +23,17 @@
     &:hover {
       color: #357ae8;
       background-color: white;
-      border-color: #357ae8;
+      border: none;
+    }
+  }
+  &.in-collection {
+    background-color: rgb(240, 240, 240);
+    color: rgb(0, 0, 0);
+    border: 1px solid #000;
+    font-size: 15px;
+    &:hover{
+      background-color: black;
+      color: white;
     }
   }
 }
