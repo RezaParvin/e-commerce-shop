@@ -8,7 +8,8 @@ import AuthPage from "./pages/AuthPage/AuthPage";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { connect } from "react-redux";
 import * as actions from "./redux/actions/index";
-
+import { createStructuredSelector } from "reselect";
+import { selectCurrentUser } from "./redux/selectors/user";
 
 class App extends Component {
   componentDidMount() {
@@ -49,11 +50,9 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    currentUser: state.user.currentUser,
-  };
-};
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+});
 
 const mapDispatchToProps = (dispatch) => {
   return {

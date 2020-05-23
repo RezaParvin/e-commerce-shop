@@ -1,2 +1,2 @@
 export { userAuth } from "./user";
-export { cartToggleDropDown, addItemToCart } from "./cart";
+export { cartToggleDropDown, addItemToCart, removeItemToCart } from "./cart";

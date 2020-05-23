@@ -1,0 +1,36 @@
+.cart-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  margin-bottom: 10px;
+  .cart-items-img {
+    width: 30%;
+    height: 100%;
+    & img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .container-name-price {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 0 5px;
+    font-size: 14px;
+  }
+  .product-count-price {
+  }
+  .cart-item-clear {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+}

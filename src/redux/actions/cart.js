@@ -12,3 +12,10 @@ export const addItemToCart = (item) => {
     item: item,
   };
 };
+
+export const removeItemToCart = (item) => {
+  return {
+    type: actions.REMOVE_ITEM_TO_CART,
+    item: item,
+  };
+};
