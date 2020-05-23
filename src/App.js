@@ -5,6 +5,7 @@ import ShopPage from "./pages/ShopPage/ShopPage";
 import Header from "./components/Header/Header";
 import { Route, Redirect } from "react-router-dom";
 import AuthPage from "./pages/AuthPage/AuthPage";
+import Checkout from "./pages/checkout/checkout";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { connect } from "react-redux";
 import * as actions from "./redux/actions/index";
@@ -45,6 +46,7 @@ class App extends Component {
             this.props.currentUser ? <Redirect to="/" /> : <AuthPage />
           }
         />
+        <Route path="/checkout" component={Checkout} />
       </div>
     );
   }

@@ -19,3 +19,10 @@ export const removeItemToCart = (item) => {
     item: item,
   };
 };
+
+export const clearItemOfCart = (item) => {
+  return {
+    type: actions.CLEAR_ITEM_OF_CART,
+    item: item,
+  };
+};

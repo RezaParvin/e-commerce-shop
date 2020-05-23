@@ -45,6 +45,12 @@ const removeItemToCart = (state, item) => {
   }
 };
 
+const clearItemOfCart = (state, item) => {
+  return updateObject(state, {
+    cartItems: state.cartItems.filter((cartItem) => cartItem.id !== item.id),
+  });
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actions.CART_TOGGLE_DROPDOWN:
@@ -53,6 +59,8 @@ const reducer = (state = initialState, action) => {
       return addItemToCart(state, action.item);
     case actions.REMOVE_ITEM_TO_CART:
       return removeItemToCart(state, action.item);
+    case actions.CLEAR_ITEM_OF_CART:
+      return clearItemOfCart(state, action.item);
     default:
       return state;
   }

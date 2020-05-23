@@ -1,0 +1,25 @@
+.container-checkout {
+  direction: rtl;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin: 50px auto;
+
+  .header-checkout {
+    display: flex;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgb(180, 180, 180);
+  }
+  .header-column {
+    width: 23%;
+    font-size: 15px;
+    color: rgb(66, 66, 66);
+  }
+  .footer-checkout {
+    font-size: 25px;
+    font-weight: bold;
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 0;
+  }
+}
