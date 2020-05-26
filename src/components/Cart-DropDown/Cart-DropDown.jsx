@@ -7,6 +7,12 @@ import { createStructuredSelector } from "reselect";
 import { selectCartItems } from "../../redux/selectors/cart";
 import * as actions from "../../redux/actions/index";
 import { withRouter } from "react-router-dom";
+import {
+  DropDown,
+  CartItemsContainer,
+  EmptyCartItems,
+  BtnCheckoutContainer,
+} from "./Cart-DropDown-styles";
 
 const CartDropDown = ({
   cartItems,
@@ -15,8 +21,8 @@ const CartDropDown = ({
   onToggleDropDown,
 }) => {
   return (
-    <div className="cart-dropdown">
-      <div className="contaienr-cart-items">
+    <DropDown>
+      <CartItemsContainer>
         {cartItems.length ? (
           cartItems.map((item) => (
             <CartDropDownItem
@@ -28,10 +34,10 @@ const CartDropDown = ({
             />
           ))
         ) : (
-          <p className='empty-cart-items'>محصولی وجود ندارد</p>
+          <EmptyCartItems>محصولی وجود ندارد</EmptyCartItems>
         )}
-      </div>
-      <div className="container-btn-checkout">
+      </CartItemsContainer>
+      <BtnCheckoutContainer>
         <CustomButton
           width="100%"
           onClick={() => {
@@ -41,8 +47,8 @@ const CartDropDown = ({
         >
           نهایی کردن
         </CustomButton>
-      </div>
-    </div>
+      </BtnCheckoutContainer>
+    </DropDown>
   );
 };
 

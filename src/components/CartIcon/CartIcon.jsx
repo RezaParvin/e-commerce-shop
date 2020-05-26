@@ -5,12 +5,16 @@ import { connect } from "react-redux";
 import * as actions from "../../redux/actions/index";
 import { selectCartItemsCount } from "../../redux/selectors/cart";
 import { createStructuredSelector } from "reselect";
+import { CartIconContainer, CartCounterContainer } from "./CartIcon.styles";
+
 const CartIcon = ({ onToggleDropDownCart, cartItemsCount }) => {
   return (
-    <div className="cart-icon" onClick={onToggleDropDownCart}>
+    <CartIconContainer onClick={onToggleDropDownCart}>
       <CartLogo className="cart-logo" />
-      <span className="cart-counter">{cartItemsCount}</span>
-    </div>
+      <CartCounterContainer>
+        {cartItemsCount}
+      </CartCounterContainer>
+    </CartIconContainer>
   );
 };
 

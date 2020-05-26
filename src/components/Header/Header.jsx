@@ -7,42 +7,44 @@ import { connect } from "react-redux";
 import CartIcon from "../CartIcon/CartIcon";
 import CartDropDown from "../Cart-DropDown/Cart-DropDown";
 import { createStructuredSelector } from "reselect";
+
 import {
   selectCartHidden,
   selectCurrentUser,
 } from "../../redux/selectors/user";
 
+import {
+  HeaderContainer,
+  LinkOption,
+  LogoContainer,
+  OptionsContainer,
+} from "./Header.styles";
+
 const Header = ({ currentUser, cartDropDown }) => {
   return (
-    <header className="header">
-      <Link to="/" className="logo">
+    <HeaderContainer>
+      <LogoContainer to="/">
         <Logo />
-      </Link>
-      <nav className="options">
-        <Link to="/shop" className="option">
-          فروشگاه
-        </Link>
-        <Link to="/contact" className="option">
-          تماس با ما
-        </Link>
+      </LogoContainer>
+      <OptionsContainer>
+        <LinkOption to="/shop">فروشگاه</LinkOption>
+        <LinkOption to="/contact">تماس با ما</LinkOption>
         {currentUser ? (
-          <div
-            className="option"
+          <LinkOption
+            as="div"
             onClick={() => {
               auth.signOut();
             }}
           >
             خروج
-          </div>
+          </LinkOption>
         ) : (
-          <Link to="/auth" className="option">
-            ورود
-          </Link>
+          <LinkOption to="/auth">ورود</LinkOption>
         )}
         <CartIcon />
         {cartDropDown ? <CartDropDown /> : null}
-      </nav>
-    </header>
+      </OptionsContainer>
+    </HeaderContainer>
   );
 };
 

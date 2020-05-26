@@ -1,26 +1,32 @@
 import React from "react";
 import "./Cart-dropdown-item.scss";
+import {
+  CartDropDownItemContainer,
+  CartImageContainer,
+  CartNamePriceContainer,
+  ClearButtonContainer,
+} from "./Cart-dropdown-item-styles";
 
 const CartDropDownItem = ({ item, onRemoveCartItem }) => {
   const { name, imageUrl, price, quantity } = item;
 
   return (
-    <div className="cart-item">
-      <div className="cart-items-img">
+    <CartDropDownItemContainer>
+      <CartImageContainer>
         <img src={imageUrl} alt="" />
-      </div>
-      <div className="container-name-price">
-        <span className="product-name">{name}</span>
-        <div className="product-count-price">
+      </CartImageContainer>
+      <CartNamePriceContainer>
+        <span>{name}</span>
+        <div>
           <span>{price}$</span>
           <span>&#10008;</span>
           <span>{quantity}</span>
         </div>
-      </div>
-      <div className="cart-item-clear" onClick={onRemoveCartItem}>
+      </CartNamePriceContainer>
+      <ClearButtonContainer onClick={onRemoveCartItem}>
         &#10005;
-      </div>
-    </div>
+      </ClearButtonContainer>
+    </CartDropDownItemContainer>
   );
 };
 
