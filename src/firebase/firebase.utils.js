@@ -2,6 +2,14 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 
+export const title_map_routeName = {
+  کلاه: "hats",
+  "کفش اسپورت": "sneakers",
+  بانوان: "womens",
+  آقایان: "mens",
+  "کت تک": "jackets",
+};
+
 //config app in firebase
 
 export const config = {
@@ -25,7 +33,7 @@ export const firestore = firebase.firestore();
 //if user is Auth , send to database
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
-  
+
   const userRef = firestore.doc(`/users/${userAuth.uid}`);
   const snapShot = await userRef.get();
 
@@ -49,9 +57,39 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   return userRef;
 };
 
-//use googleAuth in App
+export const addCollectionsAndItem = async (collectionKey, objectToAdd) => {
+  const collectionRef = firestore.collection(collectionKey);
 
+  const batch = firestore.batch();
+
+  objectToAdd.forEach((obj) => {
+    const newDocRef = collectionRef.doc();
+    batch.set(newDocRef, obj);
+  });
+
+  return await batch.commit();
+};
+
+export const convertCollectionData = (collections) => {
+  return collections.docs
+    .map((doc) => {
+      const { title, items } = doc.data();
+      return {
+        id: doc.id,
+        routeName: encodeURI(title_map_routeName[title].toLowerCase()),
+        title,
+        items,
+      };
+    })
+    .reduce((accumulator, collection) => {
+      accumulator[collection.routeName] = collection;
+      return accumulator;
+    }, {});
+};
+
+//use googleAuth in App
 //1-use object auth in overall app
+
 const provider = new firebase.auth.GoogleAuthProvider();
 //use popup
 provider.setCustomParameters({ promt: "select_account" });

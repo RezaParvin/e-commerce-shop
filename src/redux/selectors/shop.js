@@ -10,13 +10,24 @@ export const selectShopCollections = createSelector(
 export const selectShopCollectonsArray = createSelector(
   [selectShopCollections],
   (collections) =>
-    Object.keys(collections).map(
-      (nameIdentifire) => collections[nameIdentifire]
-    )
+    collections
+      ? Object.keys(collections).map(
+          (nameIdentifire) => collections[nameIdentifire]
+        )
+      : []
 );
 
 export const selectShopCategory = (categoryId) =>
-  createSelector(
-    [selectShopCollections],
-    (collections) => collections[categoryId]
+  createSelector([selectShopCollections], (collections) =>
+    collections ? collections[categoryId] : null
   );
+
+export const selectIsFetchingShopData = createSelector(
+  [selectShop],
+  (shop) => shop.isFetching
+);
+
+export const selectIsLoadCollections = createSelector(
+  [selectShop],
+  (shop) => !!shop.collections
+);

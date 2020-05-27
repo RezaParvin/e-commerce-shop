@@ -5,3 +5,10 @@ export {
   removeItemToCart,
   clearItemOfCart,
 } from "./cart";
+
+export {
+  getShopDataStart,
+  getShopDataSuccess,
+  getShopDataFailed,
+  getShopDataStartAsync,
+} from "./shop";
