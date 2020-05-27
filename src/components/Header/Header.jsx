@@ -5,7 +5,7 @@ import "./Header.scss";
 import { auth } from "../../firebase/firebase.utils";
 import { connect } from "react-redux";
 import CartIcon from "../CartIcon/CartIcon";
-import CartDropDown from "../Cart-DropDown/Cart-DropDown";
+import CartDropDownContainer from "../Cart-DropDown/Cart-DropDown-Container";
 import { createStructuredSelector } from "reselect";
 
 import {
@@ -42,7 +42,7 @@ const Header = ({ currentUser, cartDropDown }) => {
           <LinkOption to="/auth">ورود</LinkOption>
         )}
         <CartIcon />
-        {cartDropDown ? <CartDropDown /> : null}
+        {cartDropDown ? <CartDropDownContainer /> : null}
       </OptionsContainer>
     </HeaderContainer>
   );

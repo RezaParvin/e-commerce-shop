@@ -3,7 +3,6 @@ import "./CollectionPage.scss";
 import { connect } from "react-redux";
 import CollectionPreviewItem from "../../components/CollectionPreview/CollectionPreviewItem/CollectionPreviewItem";
 import { selectShopCategory } from "../../redux/selectors/shop";
-import withSpinner from "../../components/withSpinner/withSpinner";
 
 class CollectionPage extends Component {
   render() {
@@ -26,4 +25,4 @@ const mapStateToProps = (state, ownProps) => ({
   collections: selectShopCategory(ownProps.match.params.categoryId)(state),
 });
 
-export default withSpinner(connect(mapStateToProps)(CollectionPage));
+export default connect(mapStateToProps)(CollectionPage);

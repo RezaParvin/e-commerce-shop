@@ -1,15 +1,10 @@
 import React, { Component } from "react";
 import "./ShopPage.scss";
-import CollectionOverView from "../../components/CollectionOverview/CollectionOverview";
+import CollectionOverViewContainer from "../../components/CollectionOverview/CollectionOverviewContainer";
 import { Route } from "react-router-dom";
-import CollectionPage from "../CollectionPage/CollectionPage";
+import CollectionPageConatienr from "../CollectionPage/CollectionPageContainer";
 import { connect } from "react-redux";
 import * as actions from "../../redux/actions/index";
-import {
-  selectIsFetchingShopData,
-  selectIsLoadCollections,
-} from "../../redux/selectors/shop";
-import { createStructuredSelector } from "reselect";
 
 class ShopPage extends Component {
   componentDidMount() {
@@ -17,32 +12,23 @@ class ShopPage extends Component {
   }
 
   render() {
-    const { match, isFetching,isLoadCollections } = this.props;
+    const { match } = this.props;
     return (
       <div className="shop-page">
         <Route
           exact
           path={`${match.url}`}
-          render={(props) => (
-            <CollectionOverView isLoading={isFetching} {...props} />
-          )}
+          component={CollectionOverViewContainer}
         />
         <Route
           exact
           path={`${match.url}/:categoryId`}
-          render={(props) => (
-            <CollectionPage isLoading={!isLoadCollections} {...props} />
-          )}
+          component={CollectionPageConatienr}
         />
       </div>
     );
   }
 }
-
-const mapStateToProps = createStructuredSelector({
-  isFetching: selectIsFetchingShopData,
-  isLoadCollections: selectIsLoadCollections,
-});
 
 const mapDispatchToProps = (dispatch) => ({
   onGetDataStartAsync: () => {
@@ -50,4 +36,4 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ShopPage);
+export default connect(null, mapDispatchToProps)(ShopPage);
