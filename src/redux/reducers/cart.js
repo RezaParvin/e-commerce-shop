@@ -50,6 +50,9 @@ const clearItemOfCart = (state, item) => {
     cartItems: state.cartItems.filter((cartItem) => cartItem.id !== item.id),
   });
 };
+const clearCart = (state) => {
+  return updateObject(state, { cartItems: [] });
+};
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -61,6 +64,8 @@ const reducer = (state = initialState, action) => {
       return removeItemToCart(state, action.item);
     case actions.CLEAR_ITEM_OF_CART:
       return clearItemOfCart(state, action.item);
+    case actions.SIGN_OUT_CLEAR_CART:
+      return clearCart(state);
     default:
       return state;
   }

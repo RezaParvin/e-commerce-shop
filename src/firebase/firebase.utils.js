@@ -90,10 +90,19 @@ export const convertCollectionData = (collections) => {
 //use googleAuth in App
 //1-use object auth in overall app
 
-const provider = new firebase.auth.GoogleAuthProvider();
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
 //use popup
-provider.setCustomParameters({ promt: "select_account" });
+googleProvider.setCustomParameters({ promt: "select_account" });
 
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
+export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
+
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unSubscribe = auth.onAuthStateChanged((userAuth) => {
+      unSubscribe();
+      resolve(userAuth);
+    }, reject);
+  });
+};
 
 export default firebase;

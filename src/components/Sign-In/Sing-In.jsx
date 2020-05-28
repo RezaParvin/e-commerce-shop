@@ -2,8 +2,11 @@ import React, { Component } from "react";
 import "./Sign-In.scss";
 import FormInput from "../Form-Input/Form-input";
 import CustomButton from "../Custom-Button/Custom-Button";
-import { signInWithGoogle } from "../../firebase/firebase.utils";
-import { auth } from "../../firebase/firebase.utils";
+import { connect } from "react-redux";
+import {
+  userEmailSignInStart,
+  userGoogleSignInStart,
+} from "../../redux/actions/index";
 
 class SignIn extends Component {
   state = {
@@ -14,17 +17,8 @@ class SignIn extends Component {
   onSubmitHandler = async (event) => {
     event.preventDefault();
     const { email, password } = this.state;
-    
-    try {
-      await auth.signInWithEmailAndPassword(email, password);
-      this.setState({
-        email: "",
-        password: "",
-      });
-
-    } catch (error) {
-      console.log(error);
-    }
+    const { onUserEmailSignIn } = this.props;
+    onUserEmailSignIn(email, password);
   };
 
   onChangeHandler = (event) => {
@@ -33,6 +27,7 @@ class SignIn extends Component {
   };
 
   render() {
+    const { onUserGoogleSignIn } = this.props;
     return (
       <div className="sign-in">
         <h3>من قبلا ثبت نام کرده ام</h3>
@@ -57,7 +52,7 @@ class SignIn extends Component {
               ورود
             </CustomButton>
             <CustomButton
-              onClick={signInWithGoogle}
+              onClick={onUserGoogleSignIn}
               signInWithGoogle
               width="49%"
             >
@@ -70,4 +65,13 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn;
+const mapDispatchToProps = (dispatch) => ({
+  onUserGoogleSignIn: () => {
+    dispatch(userGoogleSignInStart());
+  },
+  onUserEmailSignIn: (email, password) => {
+    dispatch(userEmailSignInStart(email, password));
+  },
+});
+
+export default connect(null, mapDispatchToProps)(SignIn);

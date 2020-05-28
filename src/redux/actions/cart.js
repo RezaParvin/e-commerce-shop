@@ -26,3 +26,9 @@ export const clearItemOfCart = (item) => {
     item: item,
   };
 };
+
+export const signOutClearCart = () => {
+  return {
+    type: actions.SIGN_OUT_CLEAR_CART,
+  };
+};

@@ -6,28 +6,16 @@ import Header from "./components/Header/Header";
 import { Route, Redirect } from "react-router-dom";
 import AuthPage from "./pages/AuthPage/AuthPage";
 import Checkout from "./pages/checkout/checkout";
-import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
+
 import { connect } from "react-redux";
-import * as actions from "./redux/actions/index";
+import { checkUserAuthenticatedStart } from "./redux/actions/index";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "./redux/selectors/user";
 
 class App extends Component {
+  
   componentDidMount() {
-    this.unOnAuthStateChange = auth.onAuthStateChanged(async (userAuth) => {
-      if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth);
-        //to be sure database update
-        userRef.onSnapshot((snapshot) => {
-          this.props.onAuthUser({
-            id: snapshot.id,
-            ...snapshot.data(),
-          });
-        });
-      } else {
-        this.props.onAuthUser(userAuth);
-      }
-    });
+    this.props.onCheckUserAuthenticated();
   }
 
   componentWillUnmount() {
@@ -58,8 +46,8 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAuthUser: (user) => {
-      dispatch(actions.userAuth(user));
+    onCheckUserAuthenticated: () => {
+      dispatch(checkUserAuthenticatedStart());
     },
   };
 };
