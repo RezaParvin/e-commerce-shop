@@ -6,6 +6,7 @@ import {
   CartNamePriceContainer,
   ClearButtonContainer,
 } from "./Cart-dropdown-item-styles";
+import { convertToPersian } from "../../../shared/utility";
 
 const CartDropDownItem = ({ item, onRemoveCartItem }) => {
   const { name, imageUrl, price, quantity } = item;
@@ -18,9 +19,9 @@ const CartDropDownItem = ({ item, onRemoveCartItem }) => {
       <CartNamePriceContainer>
         <span>{name}</span>
         <div>
-          <span>{price}$</span>
+          <span>{convertToPersian(quantity.toString())}</span>
           <span>&#10008;</span>
-          <span>{quantity}</span>
+          <span>{convertToPersian(price.toString())} تومان</span>
         </div>
       </CartNamePriceContainer>
       <ClearButtonContainer onClick={onRemoveCartItem}>

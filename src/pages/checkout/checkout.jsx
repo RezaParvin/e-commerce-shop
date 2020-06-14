@@ -6,7 +6,7 @@ import {
   selectCartItems,
   selectCartItemsTotal,
 } from "../../redux/selectors/cart";
-
+import {convertToPersian} from '../../shared/utility';
 import CheckoutItem from "../../components/Checkout-item/Checkout-item";
 import * as actions from "../../redux/actions/index";
 
@@ -57,7 +57,7 @@ class Checkout extends Component {
           </div>
           <div className="footer-checkout">
             <span>
-              مبلغ کل :  <span>{totalPrice}</span> دلار
+              مبلغ کل :  <span>{convertToPersian(totalPrice+'000')}</span> تومان
             </span>
           </div>
         </div>

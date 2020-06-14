@@ -14,6 +14,9 @@
     width: 23%;
     font-size: 15px;
     color: rgb(66, 66, 66);
+    &:nth-of-type(2) {
+      width: 33%;
+    }
   }
   .footer-checkout {
     font-size: 25px;

@@ -3,9 +3,9 @@ import "./CollectionPreviewItem.scss";
 import CustomButton from "../../Custom-Button/Custom-Button";
 import { connect } from "react-redux";
 import * as actions from "../../../redux/actions/index";
-
+import { convertToPersian } from "../../../shared/utility";
 const CollectionPreviewItem = ({ item, onAddItemToCart }) => {
-  const {name, imageUrl, price } = item;
+  const { name, imageUrl, price } = item;
 
   const style = {
     backgroundImage: `url('${imageUrl}')`,
@@ -27,7 +27,7 @@ const CollectionPreviewItem = ({ item, onAddItemToCart }) => {
       </div>
       <footer className="collection-footer">
         <p>{name}</p>
-        <span>{price}</span>
+        <span>{convertToPersian(price.toString())} تومان</span>
       </footer>
     </div>
   );

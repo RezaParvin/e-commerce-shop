@@ -9,6 +9,9 @@
     display: flex;
     font-size: 15px;
     align-items: center;
+    &:nth-of-type(2){
+      width: 33%;
+    }
     & img {
       display: block;
       width: 90%;

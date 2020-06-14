@@ -6,13 +6,13 @@ import * as actions from "../../redux/actions/index";
 import { selectCartItemsCount } from "../../redux/selectors/cart";
 import { createStructuredSelector } from "reselect";
 import { CartIconContainer, CartCounterContainer } from "./CartIcon.styles";
-
+import { convertToPersian } from "../../shared/utility";
 const CartIcon = ({ onToggleDropDownCart, cartItemsCount }) => {
   return (
     <CartIconContainer onClick={onToggleDropDownCart}>
       <CartLogo className="cart-logo" />
       <CartCounterContainer>
-        {cartItemsCount}
+        {convertToPersian(cartItemsCount.toString())}
       </CartCounterContainer>
     </CartIconContainer>
   );
