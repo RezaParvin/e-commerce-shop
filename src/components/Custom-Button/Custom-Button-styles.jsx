@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 const signInWithGoogleStyle = css`
   background-color: #4285f4;
   border-color: white;
-  width:${({ width }) => width.toString()};
+  width: ${({ width }) => width};
   &:hover {
     color: #357ae8;
     background-color: white;
@@ -16,14 +16,14 @@ const inCollectionStyle = css`
   color: rgb(0, 0, 0);
   border: 1px solid #000;
   font-size: 15px;
-  width:${({ width }) => width.toString()};
+  width: ${({ width }) => width};
   &:hover {
     background-color: black;
     color: white;
   }
 `;
 
-const getStyleByProps = ({ signInWithGoogle, inCollection, width }) => {
+const getStyleByProps = ({ signInWithGoogle, inCollection }) => {
   if (inCollection) {
     return inCollectionStyle;
   }
@@ -39,7 +39,7 @@ export const ButtonContainer = styled.button`
   background-color: rgb(37, 37, 37);
   height: 45px;
   font-size: 17px;
-  width:${({ width }) => width.toString()};
+  width: ${({ width }) => width};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -52,7 +52,9 @@ export const ButtonContainer = styled.button`
     border-color: black;
     color: black;
   }
- 
+  &:disabled {
+    cursor: not-allowed;
+  }
 
   ${getStyleByProps}
 `;

@@ -6,13 +6,14 @@ import {
   selectCartItems,
   selectCartItemsTotal,
 } from "../../redux/selectors/cart";
-import {convertToPersian} from '../../shared/utility';
+import { convertToPersian } from "../../shared/utility";
 import CheckoutItem from "../../components/Checkout-item/Checkout-item";
 import * as actions from "../../redux/actions/index";
+import CustomButton from "../../components/Custom-Button/Custom-Button";
 
 class Checkout extends Component {
   render() {
-    const { cartItems, dispatch, totalPrice } = this.props;
+    const { cartItems, dispatch, totalPrice, history } = this.props;
 
     return (
       <div className="checkout-page">
@@ -57,8 +58,17 @@ class Checkout extends Component {
           </div>
           <div className="footer-checkout">
             <span>
-              مبلغ کل :  <span>{convertToPersian(totalPrice+'000')}</span> تومان
+              مبلغ کل : <span>{convertToPersian(totalPrice + "000")}</span>{" "}
+              تومان
             </span>
+            <CustomButton
+              width="130px"
+              onClick={() => {
+                history.push("/contact");
+              }}
+            >
+              مرحله بعد
+            </CustomButton>
           </div>
         </div>
       </div>

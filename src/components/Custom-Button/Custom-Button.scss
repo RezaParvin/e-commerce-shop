@@ -17,6 +17,8 @@
     border-color: black;
     color: black;
   }
+  
+
   &.btn-google {
     background-color: #4285f4;
     border-color: white;
@@ -31,7 +33,7 @@
     color: rgb(0, 0, 0);
     border: 1px solid #000;
     font-size: 15px;
-    &:hover{
+    &:hover {
       background-color: black;
       color: white;
     }

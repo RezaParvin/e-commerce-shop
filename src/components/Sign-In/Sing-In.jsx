@@ -38,14 +38,14 @@ class SignIn extends Component {
             onChangeHandler={this.onChangeHandler}
             value={this.state.email}
             name="email"
-            type="email"
+            elementType="email"
           />
           <FormInput
             label="رمز"
             onChangeHandler={this.onChangeHandler}
             value={this.state.password}
             name="password"
-            type="password"
+            elementType="password"
           />
           <div className="container-form-button">
             <CustomButton type="submit" width="49%">

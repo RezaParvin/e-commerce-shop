@@ -6,14 +6,13 @@ import Header from "./components/Header/Header";
 import { Route, Redirect } from "react-router-dom";
 import AuthPage from "./pages/AuthPage/AuthPage";
 import Checkout from "./pages/checkout/checkout";
-
+import ContactPage from "./pages/Contact/ContactPage.jsx";
 import { connect } from "react-redux";
 import { checkUserAuthenticatedStart } from "./redux/actions/index";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "./redux/selectors/user";
 
 class App extends Component {
-  
   componentDidMount() {
     this.props.onCheckUserAuthenticated();
   }
@@ -35,6 +34,7 @@ class App extends Component {
           }
         />
         <Route path="/checkout" component={Checkout} />
+        <Route path="/contact" component={ContactPage} />
       </div>
     );
   }

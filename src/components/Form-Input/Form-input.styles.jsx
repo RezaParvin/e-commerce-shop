@@ -1,21 +1,12 @@
-$sub-color: gray;
-$main-color: black;
-$valid-color:rgb(25, 145, 25);
-$not-valid-color:rgb(238, 43, 43);
+import styled, { css } from "styled-components";
 
-
-@mixin focusInput {
+const focusInput = css`
   font-size: 12px;
   top: -20px;
   color: $main-color;
-}
+`;
 
-.group {
-  position: relative;
-  width: 100%;
-}
-
-.form-element-input {
+const inputElementStyle = css`
   font-family: iran;
   box-sizing: border-box;
   display: block;
@@ -25,7 +16,8 @@ $not-valid-color:rgb(238, 43, 43);
   border: none;
   background-color: none;
   background-color: transparent;
-  border-bottom: 1px solid $sub-color;
+  border-bottom: ${({ finalValid }) =>
+    finalValid ? "1px solid gray" : "1.5px solid rgb(238, 43, 43)"};
   margin-bottom: 30px;
   direction: rtl;
   &:focus {
@@ -33,11 +25,19 @@ $not-valid-color:rgb(238, 43, 43);
   }
 
   &:focus ~ .form-element-label {
-    @include focusInput();
+    ${focusInput}
   }
-}
+`;
 
-.form-element-label {
+export const InputElement = styled.input`
+  ${inputElementStyle}
+
+  &[type="password"] {
+    letter-spacing: 5px;
+  }
+`;
+
+export const LabelElement = styled.label`
   pointer-events: none;
   font-family: iran;
   transition: all 0.3s;
@@ -46,27 +46,20 @@ $not-valid-color:rgb(238, 43, 43);
   display: block;
   right: 5px;
   top: 5px;
-  color: $sub-color;
-}
-.form-element-input[type="password"] {
-  letter-spacing: 5px;
-}
-.Shrink {
-  @include focusInput();
-}
+  color: gray;
+  ${({ value }) => (value.length ? focusInput : null)}
+`;
 
-.form-element-select {
-  @extend .form-element-input;
+export const SelectElement = styled.select`
+  ${inputElementStyle}
   margin-top: 50px;
   direction: rtl;
-}
-.form-element-textarea {
-  @extend .form-element-input;
+`;
+
+export const TextareaElement = styled.textarea`
+  ${inputElementStyle}
   height: 150px;
   direction: rtl;
   resize: none;
   margin-bottom: 50px;
-}
-.form-element-not-valid{
-  border-bottom: 1.5px solid $not-valid-color;
-}
+`;
