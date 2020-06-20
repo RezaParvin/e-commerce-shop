@@ -3,13 +3,16 @@ import CartDropDown from "./Cart-DropDown";
 import { withRouter } from "react-router-dom";
 import { createStructuredSelector } from "reselect";
 import { compose } from "redux";
-import { selectCartItems } from "../../redux/selectors/cart";
+import {
+  selectCartItems,
+  selectCartItemsCount,
+} from "../../redux/selectors/cart";
 import * as actions from "../../redux/actions/index";
 
 const mapStateToProps = createStructuredSelector({
   cartItems: selectCartItems,
+  cartItemsCount: selectCartItemsCount,
 });
-
 
 const mapDispatchToProps = (dispatch) => ({
   onRemoveCartItem: (item) => {

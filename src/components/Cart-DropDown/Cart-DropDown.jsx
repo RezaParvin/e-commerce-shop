@@ -3,7 +3,6 @@ import "./Cart-DropDown.scss";
 import CustomButton from "../Custom-Button/Custom-Button";
 import CartDropDownItem from "./Cart-dropDown-item/Cart-dropdown-item";
 
-
 import {
   DropDown,
   CartItemsContainer,
@@ -16,6 +15,7 @@ const CartDropDown = ({
   onRemoveCartItem,
   history,
   onToggleDropDown,
+  cartItemsCount,
 }) => {
   return (
     <DropDown>
@@ -41,6 +41,7 @@ const CartDropDown = ({
             onToggleDropDown();
             history.push("/checkout");
           }}
+          disabled={cartItemsCount === 0}
         >
           نهایی کردن
         </CustomButton>

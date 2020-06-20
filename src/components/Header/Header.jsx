@@ -1,6 +1,5 @@
 import React from "react";
 import { ReactComponent as Logo } from "../../assets/images/logo.svg";
-import { auth } from "../../firebase/firebase.utils";
 import { connect } from "react-redux";
 import CartIcon from "../CartIcon/CartIcon";
 import CartDropDownContainer from "../Cart-DropDown/Cart-DropDown-Container";
@@ -26,16 +25,19 @@ const Header = ({ currentUser, cartDropDown, onUserSignOut }) => {
       </LogoContainer>
       <OptionsContainer>
         <LinkOption to="/shop">فروشگاه</LinkOption>
-        <LinkOption to="/contact">تماس با ما</LinkOption>
+        <LinkOption to="/contactUs">تماس با ما</LinkOption>
         {currentUser ? (
-          <LinkOption
-            as="div"
-            onClick={() => {
-              onUserSignOut();
-            }}
-          >
-            خروج
-          </LinkOption>
+          <React.Fragment>
+          <LinkOption to='/orders'>سفارشات</LinkOption>
+            <LinkOption
+              as="div"
+              onClick={() => {
+                onUserSignOut();
+              }}
+            >
+              خروج
+            </LinkOption>
+          </React.Fragment>
         ) : (
           <LinkOption to="/auth">ورود</LinkOption>
         )}

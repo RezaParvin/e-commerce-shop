@@ -14,7 +14,7 @@ const addItemToCart = (state, item) => {
   //check exists item in cartItems
 
   const itemFind = state.cartItems.find((cartItem) => cartItem.id === item.id);
-  console.log(itemFind);
+
   if (itemFind) {
     const newItems = state.cartItems.map((cartItem) =>
       cartItem.id === item.id
@@ -65,6 +65,7 @@ const reducer = (state = initialState, action) => {
     case actions.CLEAR_ITEM_OF_CART:
       return clearItemOfCart(state, action.item);
     case actions.SIGN_OUT_CLEAR_CART:
+    case actions.CLEAR_CART_AFTER_ORDER:
       return clearCart(state);
     default:
       return state;

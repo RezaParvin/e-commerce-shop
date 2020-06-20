@@ -13,6 +13,7 @@ import {
   userSignOutFailed,
   userSignUpFailed,
   userSignUpSuccess,
+  signOutClearCart,
 } from "../actions/index";
 
 export function* proccessUserSignIn(userAuth, additionalData) {
@@ -22,6 +23,7 @@ export function* proccessUserSignIn(userAuth, additionalData) {
       userAuth,
       additionalData
     );
+
     const snapshot = yield userRef.get();
     yield put(userSignInSuccess({ id: snapshot.id, ...snapshot.data() }));
   } catch (error) {
@@ -76,6 +78,7 @@ export function* userSignOutSaga() {
   try {
     yield auth.signOut();
     yield put(userSignOutSuccess());
+    yield put(signOutClearCart());
   } catch (error) {
     yield put(userSignOutFailed(error));
   }
@@ -87,7 +90,7 @@ export function* watchUserSignOut() {
 
 export function* UserSignInAfterSignUpSaga({ payLoad: { user, displayName } }) {
   console.log(displayName);
-  
+
   try {
     yield call(proccessUserSignIn, user, { displayName });
   } catch (error) {

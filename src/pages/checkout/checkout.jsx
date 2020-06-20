@@ -5,15 +5,22 @@ import { connect } from "react-redux";
 import {
   selectCartItems,
   selectCartItemsTotal,
+  selectCartItemsCount,
 } from "../../redux/selectors/cart";
-import { convertToPersian } from "../../shared/utility";
+import { convertToPersian, priceSeperator } from "../../shared/utility";
 import CheckoutItem from "../../components/Checkout-item/Checkout-item";
 import * as actions from "../../redux/actions/index";
 import CustomButton from "../../components/Custom-Button/Custom-Button";
 
 class Checkout extends Component {
   render() {
-    const { cartItems, dispatch, totalPrice, history } = this.props;
+    const {
+      cartItems,
+      dispatch,
+      totalPrice,
+      history,
+      cartItemsCount,
+    } = this.props;
 
     return (
       <div className="checkout-page">
@@ -58,7 +65,10 @@ class Checkout extends Component {
           </div>
           <div className="footer-checkout">
             <span>
-              مبلغ کل : <span>{convertToPersian(totalPrice + "000")}</span>{" "}
+              مبلغ کل :{" "}
+              <span>
+                {priceSeperator(convertToPersian(totalPrice + "000"))}
+              </span>{" "}
               تومان
             </span>
             <CustomButton
@@ -66,6 +76,7 @@ class Checkout extends Component {
               onClick={() => {
                 history.push("/contact");
               }}
+              disabled={cartItemsCount === 0}
             >
               مرحله بعد
             </CustomButton>
@@ -79,6 +90,7 @@ class Checkout extends Component {
 const mapStateToProps = createStructuredSelector({
   cartItems: selectCartItems,
   totalPrice: selectCartItemsTotal,
+  cartItemsCount: selectCartItemsCount,
 });
 
 export default connect(mapStateToProps)(Checkout);

@@ -43,28 +43,32 @@ class SignUp extends Component {
             onChangeHandler={this.onChangeHandler}
             value={displayName}
             name="displayName"
-            elementType="text"
+            elementType="input"
+            type="text"
           />
           <FormInput
             label="ایمیل"
             onChangeHandler={this.onChangeHandler}
             value={email}
             name="email"
-            elementType="email"
+            elementType="input"
+            type="email"
           />
           <FormInput
             label="رمز"
             onChangeHandler={this.onChangeHandler}
             value={password}
             name="password"
-            elementType="password"
+            elementType="input"
+            type="password"
           />
           <FormInput
             label="تایید رمز"
             onChangeHandler={this.onChangeHandler}
             value={confirmPassword}
             name="confirmPassword"
-            elementType="password"
+            elementType="input"
+            type="password"
           />
           <CustomButton type="submit" width="49%">
             ثبت نام

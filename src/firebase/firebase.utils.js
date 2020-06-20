@@ -105,4 +105,25 @@ export const getCurrentUser = () => {
   });
 };
 
+export const addUserOrder = async (order) => {
+  const collectionRef = firestore.collection("/orders");
+  const newOrderRef = collectionRef.doc();
+  return await newOrderRef.set(order);
+};
+
+export const getUserOrders = async (userId) => {
+  const snapshot = await firestore
+    .collection("/orders")
+    .where("userId", "==", userId)
+    .get();
+  if (snapshot.empty) {
+    return [];
+  } else {
+    return snapshot.docs.map((order) => ({
+      id: order.ref.id,
+      ...order.data(),
+    }));
+  }
+};
+
 export default firebase;
