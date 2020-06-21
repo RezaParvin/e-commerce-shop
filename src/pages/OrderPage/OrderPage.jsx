@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectUserOrders } from "../../redux/selectors/order";
 import { getUserOrdersInitial } from "../../redux/actions/order";
-import { OrderPageContainer, OrderCustomerEmpty } from "./OrderPage.styles";
+import { OrderPageContainer } from "./OrderPage.styles";
 import OrderCustomerItems from "../../components/OrderCustomerItems/OrderCustomerItems";
 
 const OrderPage = ({ orders, onGetUserOrdersInitial }) => {
@@ -11,14 +11,11 @@ const OrderPage = ({ orders, onGetUserOrdersInitial }) => {
     onGetUserOrdersInitial();
   }, [onGetUserOrdersInitial]);
 
-  let OrderCustomer = <OrderCustomerItems orders={orders} />;
-  if (orders.length === 0) {
-    OrderCustomer = (
-      <OrderCustomerEmpty>سفارشی ثبت نشده است</OrderCustomerEmpty>
-    );
-  }
-
-  return <OrderPageContainer>{OrderCustomer}</OrderPageContainer>;
+  return (
+    <OrderPageContainer>
+      <OrderCustomerItems orders={orders} />
+    </OrderPageContainer>
+  );
 };
 
 const mapDispatchToProps = (dispatch) => ({

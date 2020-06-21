@@ -1,9 +1,10 @@
 import React from "react";
 import "./CollectionPreviewItem.scss";
-import CustomButton from "../../Custom-Button/Custom-Button";
+import CustomButton from "../Custom-Button/Custom-Button";
 import { connect } from "react-redux";
-import * as actions from "../../../redux/actions/index";
-import { convertToPersian } from "../../../shared/utility";
+import * as actions from "../../redux/actions/index";
+import { convertToPersian } from "../../shared/utility";
+
 const CollectionPreviewItem = ({ item, onAddItemToCart }) => {
   const { name, imageUrl, price } = item;
 

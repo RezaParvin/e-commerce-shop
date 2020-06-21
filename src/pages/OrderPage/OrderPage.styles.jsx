@@ -9,7 +9,3 @@ export const OrderPageContainer = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
 `;
-export const OrderCustomerEmpty = styled.h3`
-  text-align: center;
-  margin-top: 50px;
-`;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./CollectionPage.scss";
 import { connect } from "react-redux";
-import CollectionPreviewItem from "../../components/CollectionPreview/CollectionPreviewItem/CollectionPreviewItem";
+import CollectionPreviewItem from "../../components/CollectionPreviewItem/CollectionPreviewItem";
 import { selectShopCategory } from "../../redux/selectors/shop";
 
 class CollectionPage extends Component {

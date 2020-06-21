@@ -102,3 +102,12 @@ export const convertDateToPersian = (date) => {
 
   return `${persianTime} , ${persianDate}`;
 };
+
+export const calcNextPageCollection = (position, items) => {
+  const allProduct = items.length;
+  const allProductView = allProduct * 275;
+  const viewPosition = 275 * 4;
+  const resultPosition = position - viewPosition;
+  const maxMargin = viewPosition - allProductView;
+  return { resultPosition, maxMargin };
+};
